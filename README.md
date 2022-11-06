@@ -48,7 +48,9 @@ For commercial use, please consult [NVIDIA Research Inquiries](https://www.nvidi
         sudo apt-get install libnvidia-container1=1.10.0-1
         sudo apt-get install libnvidia-container-tools=1.10.0-1
     ```
+
     **Pop! os:**
+
     Because the nvidia-container-toolkit is only supported by a couple of distribution, you have some manipulations to do to be able to install it on Pop! OS
 
     ```bash
@@ -64,7 +66,9 @@ For commercial use, please consult [NVIDIA Research Inquiries](https://www.nvidi
         sudo apt-get install libnvidia-container1=1.10.0-1
         sudo apt-get install libnvidia-container-tools=1.10.0-1
     ```
+
     **Testing:**
+
     A working setup can be tested by running a base CUDA container:
     ```
     docker run --rm --gpus all nvidia/cuda:11.0.3-base-ubuntu20.04 nvidia-smi
@@ -102,7 +106,7 @@ For commercial use, please consult [NVIDIA Research Inquiries](https://www.nvidi
 
     After cloning navigate to the `path/to/imaginaire-coco-funit/` directory and run the build script :
 
-    Note all scripts should be run from this directory.
+    *Note* all scripts should be run from this directory.
 
     ```
     bash scripts/build_docker.sh 21.06
@@ -114,14 +118,15 @@ For commercial use, please consult [NVIDIA Research Inquiries](https://www.nvidi
     ```
 
 ## Training on the aninmal faces dataset
-1. **Downloading the data**
+7. **Downloading the data**
 
-    The example animal-faces dataset can be downloaded using the `download_dataset.py` script.
+    The example animal-faces dataset can be downloaded using the `download_dataset.py` script. 
+    This should be **run in the docker container** from the `path/to/imaginaire-coco-funit/` directory
     ```bash
     python scripts/download_dataset.py --dataset animal_faces
     ```
 
-2. **Build the lmdbs**
+8. **Build the lmdbs**
     ```python
     for f in train train_all val; do
     python scripts/build_lmdb.py \
@@ -132,15 +137,17 @@ For commercial use, please consult [NVIDIA Research Inquiries](https://www.nvidi
     done
     ```
 
-3. **Start Training**
+9. **Start Training**
+
     `--nproc_per_node=1` configures the number of GPU's used in training, it is set to 1 by default. 
+
     Other configuration parameters are found in `configs/projects/coco_funit/animal_faces/base64_bs8_class119.yaml`
 
     ```bash
     python -m torch.distributed.launch --nproc_per_node=1 train.py --config configs/projects/coco_funit/animal_faces/base64_bs8_class119.yaml --logdir logs/projects/coco_funit/animal_faces/base64_bs8_class119.yaml
     ```
 
-    Note that you may encounter a git config issue. This can be solved by running the command displayed in terminal then re-running the train command:
+    *Note* that you may encounter a git config issue. This can be solved by running the command displayed in terminal then re-running the train command:
     ```bash
     git config --global --add safe.directory path/to/imaginaire-coco-funit/
     ```
