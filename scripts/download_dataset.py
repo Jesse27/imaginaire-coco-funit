@@ -32,7 +32,7 @@ def main():
         os.makedirs(args.data_dir)
 
     # Download the compressed dataset.
-    folder_path = os.path.join(args.data_dir, args.dataset + '_raw')
+    folder_path = os.path.join(args.data_dir, args.dataset)
     compressed_path = folder_path + '.tar.gz'
     if not os.path.exists(compressed_path) and not os.path.exists(folder_path):
         print("Downloading the dataset {}.".format(args.dataset))
