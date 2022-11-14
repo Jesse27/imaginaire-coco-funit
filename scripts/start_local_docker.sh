@@ -5,7 +5,7 @@ docker run \
     --name coco-funit \
     -it \
     -v /mnt:/mnt \
-    -v ~/:/home \
+    -v $(pwd):/workspace/coco-funit \
     -p 8083:6006 \
     nvcr.io/nvidian/lpr-imagine/imaginaire:${1}-py3 \
     /bin/bash
