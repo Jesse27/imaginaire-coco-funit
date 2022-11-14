@@ -13,7 +13,7 @@ For commercial use, please consult [NVIDIA Research Inquiries](https://www.nvidi
 ### Installing Dependency's
 1. **Install Docker**
 
-    Install docker engine using the [official guide](https://docs.docker.com/engine/install/linux-install/). The link for each platform is shown under the server heading.
+    Install docker engine using the [official guide](https://docs.docker.com/engine/install). The link for each platform is shown under the server heading.
 
     After installation you should add your user to the docker group :
     ```bash
@@ -44,7 +44,7 @@ For commercial use, please consult [NVIDIA Research Inquiries](https://www.nvidi
             sudo apt-get update
         ```
         ```bash
-            sudo apt-get install nividia-container-toolkit=1.10.0-1
+            sudo apt-get install nvidia-container-toolkit=1.10.0-1
             sudo apt-get install libnvidia-container1=1.10.0-1
             sudo apt-get install libnvidia-container-tools=1.10.0-1
         ```
@@ -62,7 +62,7 @@ For commercial use, please consult [NVIDIA Research Inquiries](https://www.nvidi
             sudo apt-get update
         ```
         ```bash
-            sudo apt-get install nividia-container-toolkit=1.10.0-1
+            sudo apt-get install nvidia-container-toolkit=1.10.0-1
             sudo apt-get install libnvidia-container1=1.10.0-1
             sudo apt-get install libnvidia-container-tools=1.10.0-1
         ```
@@ -131,8 +131,8 @@ For commercial use, please consult [NVIDIA Research Inquiries](https://www.nvidi
     for f in train train_all val; do
     python scripts/build_lmdb.py \
     --config  configs/projects/coco_funit/animal_faces/base64_bs8_class119.yaml \
-    --data_root projects/coco_funit/data/raw/training/animal_faces_raw/${f} \
-    --output_root dataset/animal_faces/${f} \
+    --data_root dataset/animal_faces/${f} \
+    --output_root projects/coco_funit/data/lmdb/training/animal_faces/${f} \
     --overwrite
     done
     ```
