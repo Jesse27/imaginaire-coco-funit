@@ -116,12 +116,16 @@ For commercial use, please consult [NVIDIA Research Inquiries](https://www.nvidi
     ```
     bash scripts/start_local_docker.sh 21.06
     ```
+    This should result in a console output shown below where *0f388ec0d8b2* is the docker CONTAINER ID:
+    ```
+    root@0f388ec0d8b2:/workspace/coco-funit#
+    ```
 
 ## Training on the aninmal faces dataset
 6. **Downloading the data**
 
     The example animal-faces dataset can be downloaded using the `download_dataset.py` script. 
-    This should be **run in the docker container** from the `path/to/imaginaire-coco-funit/` directory
+    This should be **run in the docker container** from the `/workspace/coco-funit/` directory
     ```bash
     python scripts/download_dataset.py --dataset animal_faces
     ```
