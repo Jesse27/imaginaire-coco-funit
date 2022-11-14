@@ -141,7 +141,7 @@ For commercial use, please consult [NVIDIA Research Inquiries](https://www.nvidi
     done
     ```
 
-9. **Start Training**
+8. **Start Training**
 
     `--nproc_per_node=1` configures the number of GPU's used in training, it is set to 1 by default. 
 
@@ -155,3 +155,30 @@ For commercial use, please consult [NVIDIA Research Inquiries](https://www.nvidi
     ```bash
     git config --global --add safe.directory path/to/imaginaire-coco-funit/
     ```
+
+9. **Output**
+
+    The output contains images, TensorBoard logs and model checkpoints.
+
+    The training output is found in `path/to/imaginaire-coco-funit/logs/projects/coco_funit/animal_faces/base64_bs8_class119.yaml/`
+    
+    The number of rows shown in the output image is equal to the batch size per GPU.
+
+10. **TensorBoard**
+
+    TensorBoard logs should be opened within the docker container. To access the docker container while the model is training open another terminal and run the following command:
+    
+    *Note* that *coco-funit* is the name of the docker container, this can be found by running `docker container ls`. It is set to *coco-funit* by default.
+    ```bash
+    docker exec -it coco-funit /bin/bash
+    ```
+    This should result in a console output shown below where *0f388ec0d8b2* is the docker CONTAINER ID:
+    ```
+    root@0f388ec0d8b2:/workspace/coco-funit#
+    ```
+    To start TensorBoard run the following command in the docker container: 
+    ```bash
+    tensorboard --logdir logs/projects/coco_funit/animal_faces/base64_bs8_class119.yaml/tensorboard
+    ```
+    TensorBoard can then be opened at `0.0.0.0:8083` on the local machine.
+    
