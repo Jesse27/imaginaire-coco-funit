@@ -2,7 +2,6 @@ docker run \
     --gpus all \
     --shm-size 32g \
     --ipc=host \
-    --name coco-funit \
     -it \
     -v /mnt:/mnt \
     -v $(pwd):/workspace/coco-funit \

@@ -27,7 +27,7 @@ done
 echo "COPY imaginaire/model_utils/gancraft/voxlib gancraft/voxlib" >> Dockerfile
 echo "RUN cd gancraft/voxlib && make" >> Dockerfile
 
-echo "RUN git config --global -add safe.directory /workspace/coco-funit" >> Dockerfile
+echo "RUN git config --global --add safe.directory /workspace/coco-funit" >> Dockerfile
 
 echo "RUN mkdir /workspace/coco-funit" >> Dockerfile
 echo "WORKDIR /workspace/coco-funit" >> Dockerfile
