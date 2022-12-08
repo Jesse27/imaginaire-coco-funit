@@ -108,20 +108,33 @@ For commercial use, please consult [NVIDIA Research Inquiries](https://www.nvidi
 
     *Note* all scripts should be run from this directory.
 
-    ```
+    ```bash
     bash scripts/build_docker.sh 21.06
     ```
 
 5. **Start docker image**
-    ```
+    ```bash
     bash scripts/start_local_docker.sh 21.06
     ```
     This should result in a console output shown below where *0f388ec0d8b2* is the docker CONTAINER ID:
     ```
     root@0f388ec0d8b2:/workspace/coco-funit#
     ```
+    If you have run the code previously you may receive the error below. 
+    ```
+    docker: Error response from daemon: Conflict. The container name "/coco-funit" is already in use by container ...
+    ```
+    This can be solved by running the following commands to stop and remove the existing container.
+    ```bash
+    docker stop coco-funit
+    docker rm coco-funit
+    ```
+    If you wish to keep the existing container you can use the following command to open it's terminal shell
+    ```bash
+    docker exec -it coco-funit /bin/bash
+    ```
 
-## Training on the aninmal faces dataset
+## Training on the animal faces dataset
 6. **Downloading the data**
 
     The example animal-faces dataset can be downloaded using the `download_dataset.py` script. 
